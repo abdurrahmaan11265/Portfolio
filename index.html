@@ -60,6 +60,7 @@
   <div class="loader">
     <div class="scene">
       <div class="forest">
+        <h2 style="margin: 0 auto;">Loading...</h2>
         <div class="tree tree1">
           <div class="branch branch-top"></div>
           <div class="branch branch-middle"></div>
@@ -169,6 +170,7 @@
         </div>
       </div>
     </div>
+    
 
   </div>
 
@@ -634,7 +636,9 @@
 
   <script>
     $(document).ready(() => {
-      $(".loader").hide();
+      setTimeout(() => {
+        $(".loader").hide();
+      }, 5000)
     });
   </script>
 

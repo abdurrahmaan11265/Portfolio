@@ -4,8 +4,8 @@
     right: 0;
     height: 100vh;
     width: 100vw;
-    z-index: 1000;
-    background-color: #333;
+    z-index: 10000;
+    background-color: #e1eee5;
     display: flex;
     justify-content: center;
     align-items: center;
