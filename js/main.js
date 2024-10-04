@@ -155,3 +155,49 @@ $(window).load(function(){
   });
 
 })
+
+// ========================================================================= //
+//  onshow animation
+// ========================================================================= //
+// Callback function for IntersectionObserver
+// Define the observer in the outer scope so it's accessible in the callback
+let observer;
+
+const intersectionCallback = (entries) => {
+  entries.forEach(entry => { // Loop over all elements that either enter or exit the view
+    if (entry.isIntersecting) { // This is true when the element is in view
+      // Only animate if the element has not already been animated
+      if (!entry.target.classList.contains('animated')) {
+        anime({
+          targets: entry.target,  // The element being observed
+          translateY: [300, 0],    // Start 300px down (off the page), move to 0 (original position)
+          easing: 'easeOutExpo',   // Smooth easing function for the slide-in effect
+          duration: 1000,          // 1 second animation duration
+          delay: 400,              // Start the animation after a 200ms delay
+          opacity: [0, 1],         // Fade in from 0 (invisible) to 1 (fully visible)
+        });
+
+        // Mark as animated so it doesn't animate again
+        entry.target.classList.add('animated');
+        observer.unobserve(entry.target); // Unobserve to prevent further animations
+      }
+    }
+  });
+};
+
+// Wait for the window to fully load
+$(window).on('load', () => {
+  observer = new IntersectionObserver(intersectionCallback, {
+    threshold: 0.1 // Trigger animation when 10% of the element is visible
+  });
+
+  // Select all elements with the class 'animate'
+  const elementsToAnimate = document.querySelectorAll('.animate');
+
+  // Observe each element individually
+  elementsToAnimate.forEach(element => {
+    observer.observe(element);  // Start observing each element
+  });
+});
+
+
