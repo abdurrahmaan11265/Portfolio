@@ -293,7 +293,8 @@
         <div class="services-block">
           <ion-icon name="code-working-outline"></ion-icon>
           <span>AI/ML</span>
-          <p class="separator">Proficient in artificial intelligence and machine learning, solving complex problems and making
+          <p class="separator">Proficient in artificial intelligence and machine learning, solving complex problems and
+            making
             data-driven decisions.</p>
         </div>
 
@@ -347,6 +348,11 @@
                 <img src="images/portfolio/22.png" alt="img">
               </a>
             </div>
+            <div class="col-lg-4 col-md-6 portfolio-thumbnail all certificates">
+              <a class="popup-img" href="images/portfolio/31.jpg">
+                <img src="images/portfolio/31.jpg" alt="img">
+              </a>
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all certificates">
               <a class="popup-img" href="images/portfolio/18.png">
@@ -359,7 +365,7 @@
                 <img src="images/portfolio/19.png" alt="img">
               </a>
             </div>
-            
+
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all certificates">
               <a class="popup-img" href="images/portfolio/26.jpg">
                 <img src="images/portfolio/26.jpg" alt="img">
@@ -425,19 +431,19 @@
                 <img src="images/portfolio/8.jpg" alt="img">
               </a>
             </div>
-            
+
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all projects webdesign">
               <a class="popup-img" href="images/portfolio/9.png">
                 <img src="images/portfolio/9.png" alt="img">
               </a>
             </div>
-            
+
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all projects webdesign">
               <a class="popup-img" href="images/portfolio/10.png">
                 <img src="images/portfolio/10.png" alt="img">
               </a>
             </div>
-            
+
             <div class="col-lg-4 col-md-6 portfolio-thumbnail all projects webdesign">
               <a class="popup-img" href="images/portfolio/21.png">
                 <img src="images/portfolio/21.png" alt="img">
@@ -507,7 +513,7 @@
               </a>
             </div>
 
-            
+
 
           </div>
         </div>
@@ -704,9 +710,23 @@
 
   <script>
     $(document).ready(() => {
-      setTimeout(() => {
+      var images = $('img');
+      var loaded = 0;
+      images.each((index, image) => {
+        if (image.complete) {
+          loaded++;
+        } else {
+          $(image).on('load', () => {
+            loaded++;
+            if (loaded === images.length) {
+              $(".loader").fadeOut();
+            }
+          });
+        }
+      });
+      if (loaded === images.length) {
         $(".loader").hide();
-      }, 100)
+      }
     });
   </script>
 

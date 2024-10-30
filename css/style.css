@@ -450,6 +450,20 @@ nav ul li a {
   width: 100%;
 }
 
+.portfolio-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.portfolio-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.portfolio-container::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
 .portfolio-thumbnail {
   margin-bottom: 30px;
   overflow: hidden;
